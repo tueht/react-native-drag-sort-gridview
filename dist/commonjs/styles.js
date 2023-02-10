@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.default=void 0;var _reactNative=require("react-native");var styles=_reactNative.StyleSheet.create({list:{width:'100%',overflow:'visible'},content:{flexDirection:'row',flexWrap:'wrap'},uiBlock:{position:'absolute',width:'100%',height:'100%'}});var _default=styles;exports.default=_default;
+//# sourceMappingURL=styles.js.map
