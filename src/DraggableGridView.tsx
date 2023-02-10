@@ -19,6 +19,8 @@ const DraggableGridView = <T,>(
     renderItem: ({ item, index }: { item: T; index: number }) => React.ReactElement | null
     keyExtractor: (item: T) => string
     onOrderChanged: (orderedData: Array<T>, from: number, to: number) => void
+    gridHeader?: () => React.ReactElement | null
+    gridFooter?: () => React.ReactElement | null
   }
 ) => {
   const {
@@ -35,7 +37,9 @@ const DraggableGridView = <T,>(
     animMoveDuration,
     debounce,
     keyExtractor,
-    onOrderChanged
+    onOrderChanged,
+    gridHeader,
+    gridFooter
   } = props
 
   const {
@@ -92,10 +96,12 @@ const DraggableGridView = <T,>(
     <>
       <ScrollView
         {...props}
-        style={[styles.list, style, { width: listWidth }]}
+        style={[styles.list, style]}
         contentContainerStyle={[contentContainerStyle, styles.content]}
         scrollEnabled={isEnableScroll}>
+        {gridHeader?.()}
         {data.map((item: T, index: number) => renderItem({ item, index }))}
+        {gridFooter?.()}
       </ScrollView>
       {isLock === true && <View style={styles.uiBlock} />}
     </>
